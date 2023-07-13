@@ -130,3 +130,19 @@ document.addEventListener('click', function(event) {
         headerRow.parentNode.removeChild(headerRow);
     }
 });
+
+copyButton.addEventListener('click', function() {
+    const curlCommandText = curlCommandDiv.textContent;
+
+    const tempInput = document.createElement('textarea');
+    tempInput.value = curlCommandText;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+
+    copyButton.textContent = 'Copied!';
+    setTimeout(function() {
+        copyButton.textContent = 'Click to Copy';
+    }, 1500);
+});
